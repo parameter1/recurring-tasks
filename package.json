@@ -1,0 +1,24 @@
+{
+  "name": "@parameter1/recurring-tasks",
+  "version": "0.0.0",
+  "workspaces": [
+    "tasks/*",
+    "packages/*"
+  ],
+  "description": "Small, recurring tasks (cron-like)",
+  "main": "index.js",
+  "repository": "https://github.com/parameter1/recurring-tasks",
+  "author": "Josh Worden <josh@parameter1.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.3",
+    "lerna": "^3.22.1"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "envalid": "^7.1.0"
+  }
+}
