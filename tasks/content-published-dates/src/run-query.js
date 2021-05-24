@@ -16,6 +16,7 @@ module.exports = async (basedb) => {
     {
       $group: {
         _id: {
+          siteId: '$mutations.Website.primarySite',
           year: { $year: '$published' },
           month: { $month: '$published' },
           day: { $dayOfMonth: '$published' },
@@ -26,6 +27,7 @@ module.exports = async (basedb) => {
     {
       $project: {
         _id: 0,
+        siteId: '$_id.siteId',
         year: '$_id.year',
         month: '$_id.month',
         day: '$_id.day',

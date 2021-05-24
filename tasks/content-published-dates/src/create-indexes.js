@@ -4,10 +4,19 @@ module.exports = async (basedb) => {
     {
       key: {
         year: 1,
-        month: 1,
+        siteId: 1,
       },
       background: true,
-      name: 'year_month',
+      name: 'year_siteId',
+    },
+    {
+      key: {
+        year: 1,
+        month: 1,
+        siteId: 1,
+      },
+      background: true,
+      name: 'year_month_siteId',
     },
   ]);
 };

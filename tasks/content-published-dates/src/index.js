@@ -13,7 +13,7 @@ const main = async () => {
 
   const keys = `${TENANT_KEYS}`.split(',');
 
-  log(`Generating published date collections for ${keys}`);
+  log(`Triggering build for published date collections: ${keys}`);
   await Promise.all(keys.map(async (tenant) => {
     const basedb = createBaseDB(tenant);
     await createIndexes(basedb);
