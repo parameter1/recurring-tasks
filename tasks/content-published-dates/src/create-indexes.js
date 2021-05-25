@@ -3,20 +3,18 @@ module.exports = async (basedb) => {
   await collection.createIndexes([
     {
       key: {
-        year: 1,
         siteId: 1,
       },
       background: true,
-      name: 'year_siteId',
+      name: 'siteId',
     },
     {
       key: {
-        year: 1,
-        month: 1,
+        date: 1,
         siteId: 1,
       },
       background: true,
-      name: 'year_month_siteId',
+      name: 'date_siteId',
     },
   ]);
 };

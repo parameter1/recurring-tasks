@@ -2,7 +2,7 @@ const now = new Date();
 
 module.exports = async (basedb) => {
   const collection = await basedb.collection('platform', 'Content');
-  return collection.aggregate([
+  const r = collection.aggregate([
     {
       $match: {
         status: 1,
@@ -35,4 +35,5 @@ module.exports = async (basedb) => {
     },
     { $out: 'content-published-dates' },
   ]);
+  return r.toArray();
 };
