@@ -2,7 +2,7 @@ const now = new Date();
 
 module.exports = async (basedb) => {
   const collection = await basedb.collection('platform', 'Content');
-  const r = collection.aggregate([
+  const r = await collection.aggregate([
     {
       $match: {
         status: 1,
@@ -17,11 +17,18 @@ module.exports = async (basedb) => {
       $project: {
         siteId: '$mutations.Website.primarySite',
         date: { $dateToString: { format: '%Y-%m-%d', date: '$published' } },
+        published: 1,
       },
     },
     {
       $group: {
-        _id: { siteId: '$siteId', date: '$date' },
+        _id: {
+          siteId: '$mutations.Website.primarySite',
+          date: '$date',
+          year: { $year: '$published' },
+          month: { $month: '$published' },
+          day: { $dayOfMonth: '$published' },
+        },
         count: { $sum: 1 },
       },
     },
@@ -29,6 +36,9 @@ module.exports = async (basedb) => {
       $project: {
         _id: 0,
         siteId: '$_id.siteId',
+        year: '$_id.year',
+        month: '$_id.month',
+        day: '$_id.day',
         date: '$_id.date',
         count: 1,
       },
