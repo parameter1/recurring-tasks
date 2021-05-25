@@ -9,5 +9,8 @@
     "dotenv": "^10.0.0",
     "envalid": "^7.1.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "eslint --ext .js --max-warnings 5 ./"
+  }
 }

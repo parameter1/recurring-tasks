@@ -17,6 +17,9 @@
     "eslint-plugin-import": "^2.23.3",
     "lerna": "^3.22.1"
   },
+  "scripts": {
+    "test": "./node_modules/.bin/lerna run test"
+  },
   "dependencies": {
     "dotenv": "^10.0.0",
     "envalid": "^7.1.0"

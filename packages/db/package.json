@@ -1,11 +1,13 @@
 {
   "name": "@recurring-tasks/db",
+  "version": "0.0.0",
   "main": "index.js",
   "dependencies": {
     "@parameter1/base-cms-db": "^2.5.0",
     "dotenv": "^10.0.0",
     "envalid": "^7.1.0"
   },
-  "version": "0.0.0",
-  "private": true
+  "scripts": {
+    "test": "eslint --ext .js --max-warnings 5 ./"
+  }
 }
