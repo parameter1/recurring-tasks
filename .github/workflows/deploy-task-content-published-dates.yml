@@ -13,7 +13,7 @@ jobs:
       run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
     outputs:
       version: ${{ steps.tag_version.outputs.VERSION }}
-      image: ${{ github.repository }}-graphql:${{ steps.tag_version.outputs.VERSION }}
+      image: ${{ github.repository }}-task-content-published-dates:${{ steps.tag_version.outputs.VERSION }}
 
   build:
     needs: [vars]
