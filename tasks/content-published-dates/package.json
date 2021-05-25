@@ -1,11 +1,11 @@
 {
   "name": "@recurring-tasks/content-published-dates",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Generates aggregated date information for content",
   "main": "src/index.js",
   "dependencies": {
     "@parameter1/base-cms-db": "^2.5.0",
-    "@recurring-tasks/db": "^0.0.2",
+    "@recurring-tasks/db": "^0.0.3",
     "dotenv": "^10.0.0",
     "envalid": "^7.1.0"
   },
