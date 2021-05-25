@@ -14,13 +14,14 @@ module.exports = async (basedb) => {
       },
     },
     {
+      $project: {
+        siteId: '$mutations.Website.primarySite',
+        date: { $dateToString: { format: '%Y-%m-%d', date: '$published' } },
+      },
+    },
+    {
       $group: {
-        _id: {
-          siteId: '$mutations.Website.primarySite',
-          year: { $year: '$published' },
-          month: { $month: '$published' },
-          day: { $dayOfMonth: '$published' },
-        },
+        _id: { siteId: '$siteId', date: '$date' },
         count: { $sum: 1 },
       },
     },
@@ -28,9 +29,7 @@ module.exports = async (basedb) => {
       $project: {
         _id: 0,
         siteId: '$_id.siteId',
-        year: '$_id.year',
-        month: '$_id.month',
-        day: '$_id.day',
+        date: '$_id.date',
         count: 1,
       },
     },
