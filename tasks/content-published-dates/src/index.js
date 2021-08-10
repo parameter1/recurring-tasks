@@ -2,16 +2,19 @@ const { client, createBaseDB, filterDsn } = require('@recurring-tasks/db');
 const createIndexes = require('./create-indexes');
 const runQuery = require('./run-query');
 
-const { TENANT_KEYS } = require('./env');
-
 const { log } = console;
 process.on('unhandledRejection', (e) => { log(e); throw e; });
+
+const getTenantKeys = async () => {
+  const collection = await client.collection('platform', 'base-browse-config');
+  return collection.distinct('_id');
+};
 
 const main = async () => {
   // Open MongoDB connections
   await client.connect().then((connection) => log(`MongoDB connected (${filterDsn(connection)})`));
 
-  const keys = `${TENANT_KEYS}`.split(',');
+  const keys = await getTenantKeys();
 
   log(`Triggering build for published date collections: ${keys}`);
   await Promise.all(keys.map(async (tenant) => {

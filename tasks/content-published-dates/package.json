@@ -5,9 +5,7 @@
   "main": "src/index.js",
   "dependencies": {
     "@parameter1/base-cms-db": "^2.5.0",
-    "@recurring-tasks/db": "^1.0.0",
-    "dotenv": "^10.0.0",
-    "envalid": "^7.1.0"
+    "@recurring-tasks/db": "^1.0.0"
   },
   "license": "MIT",
   "scripts": {
