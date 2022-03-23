@@ -7,10 +7,20 @@ module.exports = async (basedb) => {
       $match: {
         status: 1,
         published: { $lte: now },
-        $or: [
-          { unpublished: { $exists: false } },
-          { unpublished: { $gte: now } },
-        ],
+        $and: [
+          {
+            $or: [
+              { unpublished: { $exists: false } },
+              { unpublished: { $gte: now } },
+            ],
+          },
+          {
+            $or: [
+              { 'mutations.Website.noIndex': { $exists: false } },
+              { 'mutations.Website.noIndex': false },
+            ]
+          }
+        ]
       },
     },
     {
