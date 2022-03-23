@@ -18,9 +18,9 @@ module.exports = async (basedb) => {
             $or: [
               { 'mutations.Website.noIndex': { $exists: false } },
               { 'mutations.Website.noIndex': false },
-            ]
-          }
-        ]
+            ],
+          },
+        ],
       },
     },
     {
